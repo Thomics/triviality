@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import Question from '../components/Question';
 import { getTrivia } from '../utils/Trivia';
-import '../styles/App.css';
+import '../styles/App.scss';
 
 
 class App extends Component {
