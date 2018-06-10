@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
+import Question from '../components/Question';
 import { getTrivia } from '../utils/Trivia';
 import '../styles/App.css';
 
@@ -19,28 +21,27 @@ class App extends Component {
 
 	generateTrivia() {
 		return this.state.trivia ? this.state.trivia.map((val, index) => {
+			let answers = _.shuffle([...val.incorrect_answers, val.correct_answer]);
+
 			return (
 				<div key={index}>
-					<h3>{val.category}</h3>
-					<h4>{val.question}</h4>
-					<ul>
-						<li>{val.incorrect_answers[0]}</li>
-						<li>{val.incorrect_answers[1]}</li>
-						<li>{val.incorrect_answers[2]}</li>
-						<li>{val.correct_answer}</li>
-					</ul>
+					<Question
+						category={val.category}
+						question={val.question}
+						answers={answers}
+					/>
 				</div>
 			);
 		}) : null;
 	}
 
+
+
 	render() {
 		let trivia = this.generateTrivia();
 		return (
-			<div className="App">
-				<ul>
-					{trivia}
-				</ul>
+			<div>
+				{trivia}
 			</div>
 		);
 	}
