@@ -13,7 +13,6 @@ class App extends Component {
   
 	componentDidMount() {
 		getTrivia().then((data) => {
-			console.log(data);
 			this.setState({trivia: data});
 		});
 	}
