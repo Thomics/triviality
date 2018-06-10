@@ -1,0 +1,40 @@
+{
+	"categories" : [
+		"Any Category",
+		"General Knowledge",
+		"Entertainment: Books",
+		"Entertainment: Film",
+		"Entertainment: Music",
+		"Entertainment: Musicals & Theatres",
+		"Entertainment: Television",
+		"Entertainment: Video Games",
+		"Entertainment: Board Games",
+		"Entertainment: Comics",
+		"Entertainment: Japanese Anime & Manga",
+		"Entertainment: Cartoon & Animation",
+		"Science: Gadgets",
+		"Science & Nature",
+		"Science: Computers",
+		"Science: Mathematics",
+		"Mythology",
+		"Sports",
+		"Geography",
+		"History",
+		"Politics",
+		"Art",
+		"Celebrities",
+		"Animals",
+		"Vehicles"
+	],
+	"difficulty": [
+		"Any Difficulty",
+		"Easy",
+		"Medium",
+		"Hard"
+	],
+	"questionType": [
+		"Any Type",
+		"Multiple Choice",
+		"True / False"
+	]
+}

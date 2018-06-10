@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import SelectDropDown from '../components/SelectDropDown';
 import Question from '../components/Question';
 import { getTrivia } from '../utils/Trivia';
+import optionData from '../optionData';
 import '../styles/App.scss';
 
 
@@ -14,6 +16,7 @@ class App extends Component {
 	}
   
 	componentDidMount() {
+		console.log(optionData);
 		getTrivia().then((data) => {
 			this.setState({trivia: data});
 		});
@@ -39,8 +42,18 @@ class App extends Component {
 
 	render() {
 		let trivia = this.generateTrivia();
+
 		return (
 			<div>
+				<SelectDropDown
+					options={optionData.categories}
+					onChange={(e) => {
+						this.setState({
+							category: e.target.value
+						});
+					}}
+					selectedValue={this.state.category}
+				/>
 				{trivia}
 			</div>
 		);
