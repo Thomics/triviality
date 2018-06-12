@@ -8,9 +8,10 @@ class SelectDropDown extends Component {
 			return (
 				<option
 					key={index}
-					value={val}
+					value={val.value}
+					label={val.label}
 				>
-					{val}
+					{val.label}
 				</option>
 			);
 		});

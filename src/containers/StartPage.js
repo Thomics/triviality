@@ -9,8 +9,11 @@ class StartPage extends Component {
 		super(props);
 		this.state = {
 			category: undefined,
+			categoryAPI: undefined,
 			difficulty: undefined,
-			questionType: undefined
+			difficultyAPI: undefined,
+			questionType: undefined,
+			questionAPI: undefined
 		};
 	}
   
@@ -22,7 +25,8 @@ class StartPage extends Component {
 					options={optionData.categories}
 					onChange={(e) => {
 						this.setState({
-							category: e.target.value
+							category: e.target.value,
+							categoryAPI: e.target[e.target.selectedIndex].getAttribute('label')
 						});
 					}}
 					selectedValue={this.state.category}
@@ -33,7 +37,8 @@ class StartPage extends Component {
 					options={optionData.difficulty}
 					onChange={(e) => {
 						this.setState({
-							difficulty: e.target.value
+							difficulty: e.target.value,
+							difficultyAPI: e.target[e.target.selectedIndex].getAttribute('label')
 						});
 					}}
 					selectedValue={this.state.difficulty}
@@ -44,7 +49,8 @@ class StartPage extends Component {
 					options={optionData.questionType}
 					onChange={(e) => {
 						this.setState({
-							questionType: e.target.value
+							questionType: e.target.value,
+							questionAPI: e.target[e.target.selectedIndex].getAttribute('label')
 						});
 					}}
 					selectedValue={this.state.questionType}
