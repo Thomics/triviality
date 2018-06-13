@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import SelectDropDown from '../components/SelectDropDown';
 import optionData from '../optionData';
+import { getTrivia } from '../utils/Trivia';
 import '../styles/App.scss';
 
 
 class StartPage extends Component {
+
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -16,6 +18,13 @@ class StartPage extends Component {
 			questionAPI: undefined
 		};
 	}
+
+	generateAPIUrl() {
+		getTrivia(this.state)
+		.then((data) => {
+			this.setState({trivia: data});
+		});
+	}
   
 	render() {
 		return (
@@ -25,8 +34,8 @@ class StartPage extends Component {
 					options={optionData.categories}
 					onChange={(e) => {
 						this.setState({
-							category: e.target.value,
-							categoryAPI: e.target[e.target.selectedIndex].getAttribute('label')
+							categoryAPI: e.target.value,
+							category: e.target[e.target.selectedIndex].getAttribute('label')
 						});
 					}}
 					selectedValue={this.state.category}
@@ -37,8 +46,8 @@ class StartPage extends Component {
 					options={optionData.difficulty}
 					onChange={(e) => {
 						this.setState({
-							difficulty: e.target.value,
-							difficultyAPI: e.target[e.target.selectedIndex].getAttribute('label')
+							difficultyAPI: e.target.value,
+							difficulty: e.target[e.target.selectedIndex].getAttribute('label')
 						});
 					}}
 					selectedValue={this.state.difficulty}
@@ -49,12 +58,16 @@ class StartPage extends Component {
 					options={optionData.questionType}
 					onChange={(e) => {
 						this.setState({
-							questionType: e.target.value,
-							questionAPI: e.target[e.target.selectedIndex].getAttribute('label')
+							questionAPI: e.target.value,
+							questionType: e.target[e.target.selectedIndex].getAttribute('label')
 						});
 					}}
 					selectedValue={this.state.questionType}
 				/>
+
+				<button onClick={(e) => {this.generateAPIUrl()}}>
+					Generate Questions
+				</button>
 			</div>
 		);
 	}
