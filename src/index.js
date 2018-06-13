@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.scss';
-import StartPage from './containers/StartPage';
+import Router from './containers/Router';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-	<StartPage />,
+	<Router />,
 	document.getElementById('root')
 );
 registerServiceWorker();

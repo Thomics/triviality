@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import SelectDropDown from '../components/SelectDropDown';
 import optionData from '../optionData';
 import { getTrivia } from '../utils/Trivia';
@@ -65,9 +66,14 @@ class StartPage extends Component {
 					selectedValue={this.state.questionType}
 				/>
 
-				<button onClick={(e) => {this.generateAPIUrl()}}>
+				<Link 
+					to={{
+						pathname: '/Questions',
+						state: {state: this.state}
+					}}
+				>
 					Generate Questions
-				</button>
+				</Link>
 			</div>
 		);
 	}
