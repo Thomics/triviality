@@ -17,7 +17,8 @@ class Questions extends Component {
 			difficulty: oldState.difficulty,
 			difficultyAPI: oldState.difficultyAPI,
 			questionType: oldState.questionType,
-			questionAPI: oldState.questionAPI
+			questionAPI: oldState.questionAPI,
+			trivia: undefined
 		};
 	}
 

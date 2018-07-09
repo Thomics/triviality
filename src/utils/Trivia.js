@@ -8,7 +8,6 @@ const getTrivia = (state) => {
 		console.log(url);
 	return axios.get(url)
 	.then(function (response) {
-		console.log(response.data.results);
 		return response.data.results;
 	})
 	.catch(function (error) {

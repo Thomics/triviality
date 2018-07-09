@@ -25,10 +25,12 @@
 		margin-top: 2em;
 		padding: 1em;
 		text-decoration: none;
+		transition: all .25s linear;
 
 		&:hover {
-			background: #FFF;
-			border-color: #000;
+			background: #000;
+			border-color: #FFF;
+			color: #FFF;
 		}
 	}
 }
