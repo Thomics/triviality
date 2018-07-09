@@ -21,6 +21,11 @@ class Question extends Component {
 				<ul>
 					{generatedAnswers}
 				</ul>
+				<form>
+					<input type="radio" name="gender" value="male"> Male</input>
+					<input type="radio" name="gender" value="female"> Female</input>
+					<input type="radio" name="gender" value="other"> Other</input>
+				</form>
 			</span>
 		);
 	}

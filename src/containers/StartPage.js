@@ -29,7 +29,7 @@ class StartPage extends Component {
   
 	render() {
 		return (
-			<div>
+			<div className={'generateQuestionContainer'}>
 				<SelectDropDown
 					title={'Select the Category'}
 					options={optionData.categories}
@@ -71,6 +71,7 @@ class StartPage extends Component {
 						pathname: '/Questions',
 						state: {state: this.state}
 					}}
+					className={'generateQuestionBtn'}
 				>
 					Generate Questions
 				</Link>

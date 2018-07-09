@@ -44,7 +44,7 @@ class App extends Component {
 		let trivia = this.generateTrivia();
 
 		return (
-			<div>
+			<div >
 				<SelectDropDown
 					options={optionData.categories}
 					onChange={(e) => {
