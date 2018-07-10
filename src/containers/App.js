@@ -11,18 +11,18 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			trivia: undefined
+			questions: undefined
 		};
 	}
   
 	componentDidMount() {
 		getTrivia().then((data) => {
-			this.setState({trivia: data});
+			this.setState({questions: data});
 		});
 	}
 
-	generateTrivia() {
-		return this.state.trivia ? this.state.trivia.map((val, index) => {
+	generateQuestions() {
+		return this.state.questions ? this.state.questions.map((val, index) => {
 			let answers = _.shuffle([...val.incorrect_answers, val.correct_answer]);
 
 			return (
@@ -40,7 +40,7 @@ class App extends Component {
 
 
 	render() {
-		let trivia = this.generateTrivia();
+		let questions = this.generateQuestions();
 
 		return (
 			<div >
@@ -53,7 +53,7 @@ class App extends Component {
 					}}
 					selectedValue={this.state.category}
 				/>
-				{trivia}
+				{questions}
 			</div>
 		);
 	}

@@ -6,15 +6,14 @@ class Question extends Component {
 	generateAnswers(answers) {
 		return answers.map((val, index) => {
 			return (
-				<label>
-					<input
+				<select>
+					<option
 						key={index}
-						type="checkbox" 
-						name="trivia"
 						value={val}
-					/>
-					{val}
-				</label>
+					>
+						{val}
+					</option>
+				</select>
 			);
 		});
 	}
@@ -23,7 +22,6 @@ class Question extends Component {
 		const category = this.props.category,
 			question = this.props.question,
 			generatedAnswers = this.generateAnswers(this.props.answers);
-			console.log(generatedAnswers);
 		return (
 			<span>
 				<h3>{category}</h3>

@@ -18,7 +18,9 @@ class Questions extends Component {
 			difficultyAPI: oldState.difficultyAPI,
 			questionType: oldState.questionType,
 			questionAPI: oldState.questionAPI,
-			trivia: undefined
+			trivia: undefined,
+			questionNumber: 0,
+			question: ''
 		};
 	}
 
@@ -30,26 +32,28 @@ class Questions extends Component {
 	}
 
 	generateTrivia() {
-		return this.state.trivia ? this.state.trivia.map((val, index) => {
-			let answers = _.shuffle([...val.incorrect_answers, val.correct_answer]);
+		if (this.state.trivia) {
+			let questionNumber = this.state.questionNumber,
+				trivia = this.state.trivia[questionNumber],
+				answers = _.shuffle([...trivia.incorrect_answers, trivia.correct_answer]);
+
 
 			return (
-				<div key={index}>
-					<Question
-						category={val.category}
-						question={val.question}
-						answers={answers}
-					/>
-				</div>
+				<Question
+					category={trivia.category}
+					question={trivia.question}
+					answers={answers}
+				/>
 			);
-		}) : null;
+			this.setState({questionNumber: questionNumber++});
+		}
 	}
 
 	render() {
 		let trivia = this.generateTrivia();
 
 		return (
-			<div>
+			<div className={'questionContainer'}>
 				{trivia}
 			</div>
 		);
