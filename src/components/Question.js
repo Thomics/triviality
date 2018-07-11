@@ -6,14 +6,14 @@ class Question extends Component {
 	generateAnswers(answers) {
 		return answers.map((val, index) => {
 			return (
-				<select>
+				
 					<option
 						key={index}
 						value={val}
 					>
 						{val}
 					</option>
-				</select>
+				
 			);
 		});
 	}
@@ -24,10 +24,14 @@ class Question extends Component {
 			generatedAnswers = this.generateAnswers(this.props.answers);
 		return (
 			<span>
-				<h3>{category}</h3>
+				<h3>Category: {category}</h3>
 				<h4>{question}</h4>
 				<form>
-					{generatedAnswers}
+					<select size={4}>
+						<option disabled selected value style={{'display': 'none'}}></option>
+						{generatedAnswers}
+					</select>
+					
 				</form>
 			</span>
 		);
