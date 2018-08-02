@@ -5,14 +5,14 @@ const getTrivia = (state) => {
 		url = state.categoryAPI ? `${url}&category=${state.categoryAPI}` : url; 
 		url = state.difficultyAPI ? `${url}&difficulty=${state.difficultyAPI}` : url;
 		url = state.questionAPI ? `${url}&type=${state.questionAPI}` : url;
-		console.log(url);
+
 	return axios.get(url)
-	.then(function (response) {
-		return response.data.results;
-	})
-	.catch(function (error) {
-		console.log(error);
-	});
+		.then(function (response) {
+			return response.data.results;
+		})
+		.catch(function (error) {
+			console.log(error);
+		});
 }
 
 export {getTrivia};

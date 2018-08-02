@@ -6,7 +6,6 @@ import { getTrivia } from '../utils/Trivia';
 import optionData from '../optionData';
 import '../styles/App.scss';
 
-
 class App extends Component {
 	constructor(props) {
 		super(props);

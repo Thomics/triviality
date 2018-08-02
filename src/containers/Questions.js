@@ -35,7 +35,8 @@ class Questions extends Component {
 		if (this.state.trivia) {
 			let questionNumber = this.state.questionNumber,
 				trivia = this.state.trivia[questionNumber],
-				answers = _.shuffle([...trivia.incorrect_answers, trivia.correct_answer]);
+				correctAnswer = trivia.correct_answer,
+				answers = _.shuffle([...trivia.incorrect_answers, correctAnswer]);
 
 
 			return (
@@ -43,6 +44,15 @@ class Questions extends Component {
 					category={trivia.category}
 					question={trivia.question}
 					answers={answers}
+					correctAnswer={correctAnswer}
+					// onClick={(e) => {
+					// 	e.preventDefault();
+					// 	if (selectedValue === correctAnswer) {
+					// 		console.log('nailed it')
+					// 	}
+					// 	console.log(correctAnswer);
+					// 	console.log(selectedValue);
+					// }}
 				/>
 			);
 			this.setState({questionNumber: questionNumber++});

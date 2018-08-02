@@ -21,17 +21,40 @@ class Question extends Component {
 	render() {
 		const category = this.props.category,
 			question = this.props.question,
+			correctAnswer = this.props.correctAnswer,
 			generatedAnswers = this.generateAnswers(this.props.answers);
+		let selectedValue = '';
+
 		return (
 			<span>
 				<h3>Category: {category}</h3>
 				<h4>{question}</h4>
-				<form>
-					<select size={4}>
-						<option disabled selected value style={{'display': 'none'}}></option>
+				<form
+					onSubmit={(e) => {
+						e.preventDefault();
+						if (selectedValue === correctAnswer) {
+							console.log('nailed it')
+						}
+						console.log('in here');
+						console.log(correctAnswer);
+						console.log(selectedValue);
+						console.log(e);
+						console.log(e.target.selected);
+					}}
+				>
+					<select
+						size={4}
+						defaultValue='first'
+						onClick={(e) => {
+							selectedValue = e.target.value;
+						}}
+					>
+						<option disabled style={{'display': 'none'}} value='first'></option>
 						{generatedAnswers}
 					</select>
-					
+					<button>
+						Submit
+					</button>
 				</form>
 			</span>
 		);
