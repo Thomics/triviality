@@ -24,7 +24,6 @@ class StartPage extends Component {
 				<Dropdown
 					label='Category'
 					data={optionData.categories}
-					style={{flex: 1}}
 					onChangeText={(event) => {
 						this.setState({categoryAPI: event});
 					}}
@@ -32,7 +31,6 @@ class StartPage extends Component {
 				<Dropdown
 					label='Difficulty'
 					data={optionData.difficulty}
-					style={{flex: 2}}
 					onChangeText={(event) => {
 						this.setState({difficultyAPI: event});
 					}}
@@ -40,7 +38,6 @@ class StartPage extends Component {
 				<Dropdown
 					label='Question Type'
 					data={optionData.questionType}
-					style={{flex: 3}}
 					onChangeText={(event) => {
 						this.setState({questionAPI: event});
 					}}
