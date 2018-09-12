@@ -12,7 +12,7 @@ class Question extends Component {
 					value={val}
 					style={styles.button}
 				>
-					<Text>{val}</Text>
+					<Text style={styles.questionText}>{val}</Text>
 				</TouchableOpacity>
 			);
 		});
@@ -29,7 +29,7 @@ class Question extends Component {
 			<View style={styles.container}>
 				<Text style={styles.category}>{category}</Text>
 				<Text style={styles.question}>{question}</Text>
-				<View style={styles.buttonContainer}>
+				<View>
 					{generatedAnswers}
 				</View>
 			</View>
@@ -39,22 +39,34 @@ class Question extends Component {
 
 const styles = StyleSheet.create({
 	container: {
-		marginTop: 100
+		marginTop: 100,
+		// flexWrap: 'wrap',
+		// alignItems: 'center'
+		flex: 0
 	},
-	buttonContainer: {
-		alignItems: 'center',
-		marginTop: 40
-	},
+	// buttonContainer: {
+	// 	alignItems: 'center',
+	// 	marginTop: 40
+	// },
 	button: {
 		backgroundColor: '#ffb3ba',
-		width: 250,
-		padding: 15
+		height: 60,
+		justifyContent: 'center',
+		alignItems: 'center',
+		marginVertical: 15
 	},
 	category: {
-		fontSize: 26
+		fontSize: 26,
+		paddingLeft: 20,
+		paddingRight: 10
 	},
 	question: {
-		fontSize: 18
+		fontSize: 18,
+		paddingLeft: 20,
+		paddingRight: 10
+	},
+	questionText: {
+		fontSize: 24
 	}
 });
 
