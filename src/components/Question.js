@@ -3,27 +3,48 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 
 class Question extends Component {
-	
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			buttonColor: 'red',
+			answered: false,
+			answeredCorrectly: undefined
+		};
+		this.press = this.press.bind(this);
+	}
+
+	press = (e, selectedValue) => {
+		let answeredCorrectly = selectedValue === this.props.correctAnswer;
+		// console.log(this.props.correctAnswer)
+		console.log(answeredCorrectly)
+		this.setState({answered: true, answeredCorrectly: answeredCorrectly});
+	}
+
 	generateAnswers(answers) {
+		// console.log(answers);
 		return answers.map((val, index) => {
+			console.log(val);
+			console.log(index);
 			return (
 				<TouchableOpacity
 					key={index}
 					value={val}
-					style={styles.button}
+					style={this.state.answered && this.props.correctAnswer === val ? [styles.button, styles.correct] : styles.button}
+					onPress={(event) => {this.press(event, val)}}
 				>
 					<Text style={styles.questionText}>{val}</Text>
 				</TouchableOpacity>
 			);
 		});
 	}
-	
+
 	render() {
 		const category = this.props.category,
 			question = this.props.question,
 			correctAnswer = this.props.correctAnswer,
 			generatedAnswers = this.generateAnswers(this.props.answers);
-		let selectedValue = '';
 
 		return (
 			<View style={styles.container}>
@@ -40,14 +61,8 @@ class Question extends Component {
 const styles = StyleSheet.create({
 	container: {
 		marginTop: 100,
-		// flexWrap: 'wrap',
-		// alignItems: 'center'
 		flex: 0
 	},
-	// buttonContainer: {
-	// 	alignItems: 'center',
-	// 	marginTop: 40
-	// },
 	button: {
 		backgroundColor: '#ffb3ba',
 		height: 60,
@@ -67,6 +82,9 @@ const styles = StyleSheet.create({
 	},
 	questionText: {
 		fontSize: 24
+	},
+	correct: {
+		backgroundColor: 'green'
 	}
 });
 

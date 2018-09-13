@@ -21,7 +21,6 @@ class TriviaQuestions extends Component {
 	}
 
 	generateTrivia() {
-		console.log(this.state);
 		if (this.state.trivia) {
 			let questionNumber = this.state.questionNumber,
 				trivia = this.state.trivia[questionNumber],
@@ -35,14 +34,6 @@ class TriviaQuestions extends Component {
 					question={trivia.question}
 					answers={answers}
 					correctAnswer={correctAnswer}
-					onClick={(e) => {
-						e.preventDefault();
-						if (selectedValue === correctAnswer) {
-							console.log('nailed it')
-						}
-						console.log(correctAnswer);
-						console.log(selectedValue);
-					}}
 				/>
 			);
 		}
