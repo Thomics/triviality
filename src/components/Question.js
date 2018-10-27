@@ -40,15 +40,15 @@ class Question extends Component {
 	}
 
 	render() {
-		const category = this.props.category,
-			question = this.props.question,
+		const question = this.props.question,
 			correctAnswer = this.props.correctAnswer,
 			generatedAnswers = this.generateAnswers(this.props.answers);
 
 		return (
 			<View style={styles.container}>
-				<Text style={styles.category}>{category}</Text>
-				<Text style={styles.question}>{question}</Text>
+				<View style={styles.questionContainer}>
+					<Text style={styles.question}>{question}</Text>
+				</View>
 				<View>{generatedAnswers}</View>
 			</View>
 		);
@@ -57,32 +57,38 @@ class Question extends Component {
 
 const styles = StyleSheet.create({
 	container: {
-		marginTop: 100,
+		paddingTop: 80,
+		paddingHorizontal: '5%',
 		flex: 0,
 		backgroundColor: '#1b286b'
 	},
 	button: {
-		backgroundColor: '#ffb3ba',
+		backgroundColor: 'transparent',
+		borderColor: '#00d5f9',
+		borderStyle: 'solid',
+		borderWidth: 1,
 		height: 60,
 		justifyContent: 'center',
 		alignItems: 'center',
-		marginVertical: 15
-	},
-	category: {
-		fontSize: 26,
-		paddingLeft: 20,
-		paddingRight: 10
+		marginVertical: 15,
+		borderRadius: 10
 	},
 	question: {
-		fontSize: 18,
-		paddingLeft: 20,
-		paddingRight: 10
+		fontSize: 22,
+		color: '#FFFFFF'
+	},
+	questionContainer: {
+		backgroundColor: '#00d5f9',
+		padding: 20,
+		borderRadius: 10,
+		minHeight: 200
 	},
 	questionText: {
-		fontSize: 24
+		fontSize: 24,
+		color: '#FFFFFF'
 	},
 	correct: {
-		backgroundColor: 'green'
+		backgroundColor: '#70bdbb'
 	}
 });
 

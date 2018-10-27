@@ -47,8 +47,15 @@ class TriviaQuestions extends Component {
 	render() {
 		let trivia = this.generateTrivia();
 
-		return <View>{trivia}</View>;
+		return <View style={styles.container}>{trivia}</View>;
 	}
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: '#1b286b'
+	}
+});
 
 export default TriviaQuestions;
