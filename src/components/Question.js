@@ -58,7 +58,8 @@ class Question extends Component {
 const styles = StyleSheet.create({
 	container: {
 		marginTop: 100,
-		flex: 0
+		flex: 0,
+		backgroundColor: '#1b286b'
 	},
 	button: {
 		backgroundColor: '#ffb3ba',

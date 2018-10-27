@@ -16,11 +16,19 @@ class StartPage extends Component {
 	}
 
 	render() {
+		const dropdownProps = {
+			pickerStyle: { backgroundColor: '#00d5f9' },
+			textColor: '#FFFFFF',
+			fontSize: 24,
+			baseColor: '#FFFFFF',
+			dropdownMargins: { min: 20, max: 40 }
+		};
 		return (
 			<View style={styles.container}>
 				<Dropdown
 					label="Category"
 					data={optionData.categories}
+					{...dropdownProps}
 					onChangeText={(event) => {
 						this.setState({ categoryAPI: event });
 					}}
@@ -28,6 +36,7 @@ class StartPage extends Component {
 				<Dropdown
 					label="Difficulty"
 					data={optionData.difficulty}
+					{...dropdownProps}
 					onChangeText={(event) => {
 						this.setState({ difficultyAPI: event });
 					}}
@@ -35,6 +44,7 @@ class StartPage extends Component {
 				<Dropdown
 					label="Question Type"
 					data={optionData.questionType}
+					{...dropdownProps}
 					onChangeText={(event) => {
 						this.setState({ questionAPI: event });
 					}}
@@ -50,7 +60,7 @@ class StartPage extends Component {
 							}
 						}}
 					>
-						<Text>Start Trivia</Text>
+						<Text style={styles.buttonText}>Start Trivia</Text>
 					</Link>
 				</TouchableOpacity>
 			</View>
@@ -62,11 +72,21 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		justifyContent: 'center',
-		backgroundColor: '#E8EAF6'
+		backgroundColor: '#1b286b',
+		paddingHorizontal: '10%'
 	},
 	button: {
-		backgroundColor: '#DDDDDD',
-		width: 250
+		backgroundColor: '#00d5f9',
+		width: '100%',
+		paddingVertical: 18,
+		alignItems: 'center',
+		marginTop: 40,
+		borderRadius: 100
+	},
+	buttonText: {
+		fontSize: 32,
+		color: '#FFFFFF',
+		fontWeight: '700'
 	}
 });
 
