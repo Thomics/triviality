@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "eslint-plugin-prettier": "^3.0.0",
+    "husky": "^1.1.2",
     "jest-expo": "~27.0.0",
+    "lint-staged": "^7.3.0",
+    "prettier": "1.14.3",
     "react-devtools": "^3.3.4",
     "react-native-scripts": "1.14.0",
     "react-test-renderer": "16.3.1"
@@ -17,11 +21,23 @@
     "test": "jest",
     "react-devtools": "react-devtools"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "jest": {
     "preset": "jest-expo"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "entities": "^1.1.2",
     "expo": "^27.0.1",
     "lodash": "^4.17.10",
     "react": "16.3.1",
