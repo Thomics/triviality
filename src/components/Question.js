@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
-
 class Question extends Component {
-
 	constructor(props) {
 		super(props);
 
@@ -17,22 +15,23 @@ class Question extends Component {
 
 	press = (e, selectedValue) => {
 		let answeredCorrectly = selectedValue === this.props.correctAnswer;
-		// console.log(this.props.correctAnswer)
-		console.log(answeredCorrectly)
-		this.setState({answered: true, answeredCorrectly: answeredCorrectly});
-	}
+		this.setState({ answered: true, answeredCorrectly: answeredCorrectly });
+	};
 
 	generateAnswers(answers) {
-		// console.log(answers);
 		return answers.map((val, index) => {
-			console.log(val);
-			console.log(index);
 			return (
 				<TouchableOpacity
 					key={index}
 					value={val}
-					style={this.state.answered && this.props.correctAnswer === val ? [styles.button, styles.correct] : styles.button}
-					onPress={(event) => {this.press(event, val)}}
+					style={
+						this.state.answered && this.props.correctAnswer === val
+							? [styles.button, styles.correct]
+							: styles.button
+					}
+					onPress={(event) => {
+						this.press(event, val);
+					}}
 				>
 					<Text style={styles.questionText}>{val}</Text>
 				</TouchableOpacity>
@@ -50,9 +49,7 @@ class Question extends Component {
 			<View style={styles.container}>
 				<Text style={styles.category}>{category}</Text>
 				<Text style={styles.question}>{question}</Text>
-				<View>
-					{generatedAnswers}
-				</View>
+				<View>{generatedAnswers}</View>
 			</View>
 		);
 	}

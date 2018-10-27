@@ -5,19 +5,16 @@ import _ from 'lodash';
 import { getTrivia } from '../utils/getTrivia';
 import Question from '../components/Question';
 
-
-
 class TriviaQuestions extends Component {
-
 	constructor(props) {
 		super(props);
-		
+
 		this.state = {
 			...props.location.state,
 			trivia: undefined,
 			questionNumber: 0,
 			question: undefined
-		}
+		};
 	}
 
 	generateTrivia() {
@@ -25,8 +22,10 @@ class TriviaQuestions extends Component {
 			let questionNumber = this.state.questionNumber,
 				trivia = this.state.trivia[questionNumber],
 				correctAnswer = trivia.correct_answer,
-				answers = _.shuffle([...trivia.incorrect_answers, correctAnswer]);
-
+				answers = _.shuffle([
+					...trivia.incorrect_answers,
+					correctAnswer
+				]);
 
 			return (
 				<Question
@@ -40,22 +39,15 @@ class TriviaQuestions extends Component {
 	}
 
 	componentWillMount() {
-		getTrivia(this.state)
-		.then((data) => {
-			this.setState({trivia: data});
+		getTrivia(this.state).then((data) => {
+			this.setState({ trivia: data });
 		});
 	}
-	
-  
+
 	render() {
-		
 		let trivia = this.generateTrivia();
 
-		return (
-			<View>
-				{trivia}
-			</View>
-		);
+		return <View>{trivia}</View>;
 	}
 }
 

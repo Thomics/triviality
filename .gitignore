@@ -3,6 +3,9 @@
 # expo
 .expo/
 
+# IDE Config
+.vscode
+
 # dependencies
 /node_modules
 
