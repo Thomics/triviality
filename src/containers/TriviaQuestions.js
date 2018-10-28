@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import { Link } from 'react-router-native';
+import { StyleSheet, View } from 'react-native';
 import _ from 'lodash';
 import { getTrivia } from '../utils/getTrivia';
 import Question from '../components/Question';
@@ -17,25 +16,32 @@ class TriviaQuestions extends Component {
 		};
 	}
 
-	generateTrivia() {
-		if (this.state.trivia) {
-			let questionNumber = this.state.questionNumber,
-				trivia = this.state.trivia[questionNumber],
-				correctAnswer = trivia.correct_answer,
-				answers = _.shuffle([
-					...trivia.incorrect_answers,
-					correctAnswer
-				]);
+	generateQuestions() {
+		let trivia = this.state.trivia;
+
+		const triviaArr = trivia.map((question, ind) => {
+			let answers = _.shuffle([
+				...question.incorrect_answers,
+				question.correct_answer
+			]);
 
 			return (
 				<Question
-					category={trivia.category}
-					question={trivia.question}
+					key={ind}
 					answers={answers}
-					correctAnswer={correctAnswer}
+					category={question.category}
+					question={question.question}
+					correctAnswer={question.correct_answer}
+					answerQuestion={() => {
+						let currentNumber = this.state.questionNumber;
+						this.setState({
+							questionNumber: currentNumber + 1
+						});
+					}}
 				/>
 			);
-		}
+		});
+		return triviaArr;
 	}
 
 	componentWillMount() {
@@ -45,9 +51,13 @@ class TriviaQuestions extends Component {
 	}
 
 	render() {
-		let trivia = this.generateTrivia();
+		let trivia = this.state.trivia ? this.generateQuestions() : [];
 
-		return <View style={styles.container}>{trivia}</View>;
+		return (
+			<View style={styles.container}>
+				{trivia[this.state.questionNumber]}
+			</View>
+		);
 	}
 }
 

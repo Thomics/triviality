@@ -31,6 +31,7 @@ class Question extends Component {
 					}
 					onPress={(event) => {
 						this.press(event, val);
+						this.props.answerQuestion();
 					}}
 				>
 					<Text style={styles.questionText}>{val}</Text>
@@ -41,7 +42,6 @@ class Question extends Component {
 
 	render() {
 		const question = this.props.question,
-			correctAnswer = this.props.correctAnswer,
 			generatedAnswers = this.generateAnswers(this.props.answers);
 
 		return (
@@ -81,14 +81,16 @@ const styles = StyleSheet.create({
 		backgroundColor: '#00d5f9',
 		padding: 20,
 		borderRadius: 10,
-		minHeight: 200
+		minHeight: 200,
+		marginBottom: 40
 	},
 	questionText: {
 		fontSize: 24,
 		color: '#FFFFFF'
 	},
 	correct: {
-		backgroundColor: '#70bdbb'
+		backgroundColor: '#3cdd00',
+		borderColor: '#3cdd00'
 	}
 });
 
