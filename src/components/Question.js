@@ -5,14 +5,14 @@ class Question extends Component {
 	render() {
 		return (
 			<View style={styles.questionContainer}>
-				<Text style={styles.question}>{this.props.question}</Text>
+				<Text style={styles.questionText}>{this.props.question}</Text>
 			</View>
 		);
 	}
 }
 
 const styles = StyleSheet.create({
-	question: {
+	questionText: {
 		fontSize: 22,
 		color: '#FFFFFF'
 	},

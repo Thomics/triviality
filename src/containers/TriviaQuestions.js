@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import _ from 'lodash';
 import { getTrivia } from '../utils/getTrivia';
 import Answers from '../components/Answers';
+import Question from '../components/Question';
 
 class TriviaQuestions extends Component {
 	constructor(props) {
@@ -19,7 +20,7 @@ class TriviaQuestions extends Component {
 	generateAnswers() {
 		let trivia = this.state.trivia;
 
-		const triviaArr = trivia.map((question, ind) => {
+		return trivia.map((question, ind) => {
 			let answers = _.shuffle([
 				...question.incorrect_answers,
 				question.correct_answer
@@ -27,10 +28,8 @@ class TriviaQuestions extends Component {
 
 			return (
 				<Answers
-					key={ind}
+					key={`answer-${ind}`}
 					answers={answers}
-					category={question.category}
-					question={question.question}
 					correctAnswer={question.correct_answer}
 					answerQuestion={() => {
 						let currentNumber = this.state.questionNumber;
@@ -41,7 +40,16 @@ class TriviaQuestions extends Component {
 				/>
 			);
 		});
-		return triviaArr;
+	}
+
+	generateQuestions() {
+		let trivia = this.state.trivia;
+
+		return trivia.map((trivia, ind) => {
+			return (
+				<Question key={`question-${ind}`} question={trivia.question} />
+			);
+		});
 	}
 
 	componentWillMount() {
@@ -51,11 +59,13 @@ class TriviaQuestions extends Component {
 	}
 
 	render() {
-		let trivia = this.state.trivia ? this.generateAnswers() : [];
+		let answers = this.state.trivia ? this.generateAnswers() : [],
+			questions = this.state.trivia ? this.generateQuestions() : [];
 
 		return (
 			<View style={styles.container}>
-				{trivia[this.state.questionNumber]}
+				{questions[this.state.questionNumber]}
+				{answers[this.state.questionNumber]}
 			</View>
 		);
 	}
@@ -64,7 +74,9 @@ class TriviaQuestions extends Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#1b286b'
+		backgroundColor: '#1b286b',
+		paddingTop: 80,
+		paddingHorizontal: '5%'
 	}
 });
 
