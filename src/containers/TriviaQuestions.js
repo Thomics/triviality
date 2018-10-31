@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import _ from 'lodash';
 import { getTrivia } from '../utils/getTrivia';
-import Question from '../components/Question';
+import Answers from '../components/Answers';
 
 class TriviaQuestions extends Component {
 	constructor(props) {
@@ -16,7 +16,7 @@ class TriviaQuestions extends Component {
 		};
 	}
 
-	generateQuestions() {
+	generateAnswers() {
 		let trivia = this.state.trivia;
 
 		const triviaArr = trivia.map((question, ind) => {
@@ -26,7 +26,7 @@ class TriviaQuestions extends Component {
 			]);
 
 			return (
-				<Question
+				<Answers
 					key={ind}
 					answers={answers}
 					category={question.category}
@@ -51,7 +51,7 @@ class TriviaQuestions extends Component {
 	}
 
 	render() {
-		let trivia = this.state.trivia ? this.generateQuestions() : [];
+		let trivia = this.state.trivia ? this.generateAnswers() : [];
 
 		return (
 			<View style={styles.container}>
