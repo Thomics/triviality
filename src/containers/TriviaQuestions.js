@@ -47,7 +47,11 @@ class TriviaQuestions extends Component {
 
 		return trivia.map((trivia, ind) => {
 			return (
-				<Question key={`question-${ind}`} question={trivia.question} />
+				<Question
+					key={`question-${ind}`}
+					question={trivia.question}
+					questionNumber={ind + 1}
+				/>
 			);
 		});
 	}

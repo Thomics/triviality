@@ -6,6 +6,10 @@ class Question extends Component {
 		return (
 			<View style={styles.questionContainer}>
 				<Text style={styles.questionText}>{this.props.question}</Text>
+				<Text style={styles.numberQuestion}>
+					{this.props.questionNumber}
+					/10
+				</Text>
 			</View>
 		);
 	}
@@ -22,6 +26,14 @@ const styles = StyleSheet.create({
 		borderRadius: 10,
 		minHeight: 200,
 		marginBottom: 40
+	},
+	numberQuestion: {
+		color: '#FFFFFF',
+		fontSize: 22,
+		position: 'absolute',
+		bottom: 10,
+		right: 10,
+		backgroundColor: '#00d5f9'
 	}
 });
 
